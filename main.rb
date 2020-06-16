@@ -1,1 +1,1 @@
-puts "required main"
+require './lib/file_loader'
