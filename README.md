@@ -23,6 +23,12 @@ This program reads a list of customers from a file and outputs those customers w
           cat data/customers.txt | ./main.rb > output.txt
         
    
+# Tests
+
+```
+bundle install
+bundle exec rspec spec
+```   
  
 
 # TODO
