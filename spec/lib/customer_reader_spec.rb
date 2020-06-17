@@ -15,6 +15,12 @@ RSpec.describe CustomerReader do
     expect(customer_reader).to be_an Enumerable
   end
 
+  it 'raises error if line_reader is nil' do
+    expect {
+      CustomerReader.new(line_reader: nil)
+    }.to raise_error(ArgumentError)
+  end
+
   it 'converts json lines to Customer objects' do
     iter = customer_reader.each
     

@@ -1,4 +1,3 @@
-# typed: false
 require 'spec_helper'
 
 RSpec.describe FileReader do
@@ -6,6 +5,12 @@ RSpec.describe FileReader do
 
   it 'is an enumerable' do
     expect(subject).to be_an Enumerable
+  end
+
+  it 'requires filename param' do
+    expect {
+      FileReader.new(filename: nil)
+    }.to raise_error(ArgumentError)
   end
 
   describe '#each' do

@@ -11,6 +11,12 @@ RSpec.describe CustomerSearchResult do
 
   subject(:customer_search_result) { CustomerSearchResult.new(customers: customers) }
 
+  it 'requires customers param' do
+    expect{
+      CustomerSearchResult.new(customers: nil)
+    }.to raise_error(ArgumentError)
+  end
+
   it 'is an Enumerable' do
     expect(customer_search_result).to be_an Enumerable
   end

@@ -2,6 +2,9 @@ class FileLoader
   include Enumerable
 
   def initialize(filename:)
+    raise ArgumentError, "filename can't be nil" unless filename
+    raise ArgumentError, "specified file (#{filename.inspect}) does not exist" unless File.exists?(filename)
+
     @filename = filename
   end
 

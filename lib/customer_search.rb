@@ -4,6 +4,10 @@ class CustomerSearch
   attr_reader :search_radius_km, :origin
   
   def initialize(customer_reader:, search_radius_km: 100, origin: )
+    raise ArgumentError, "customer_reader can't be nil" unless customer_reader
+    raise ArgumentError, "search_radius_km can't be nil" unless search_radius_km
+    raise ArgumentError, "origin can't be nil" unless origin
+
     @customer_reader = customer_reader
     @search_radius_km = search_radius_km
     @origin = origin

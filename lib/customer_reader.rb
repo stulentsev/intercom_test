@@ -4,6 +4,7 @@ class CustomerReader
   include Enumerable
 
   def initialize(line_reader:)
+    raise ArgumentError, "line_reader can't be nil" unless line_reader
     @line_reader = line_reader
   end
 

@@ -4,6 +4,8 @@ class CustomerSearchResult
   attr_reader :customers
 
   def initialize(customers:)
+    raise ArgumentError, "customers can't be nil" unless customers
+
     @customers = customers
   end
 

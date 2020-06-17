@@ -14,6 +14,36 @@ RSpec.describe CustomerSearch do
     )
   }
 
+  it 'requires customer_reader param' do
+    expect {
+      CustomerSearch.new(
+          customer_reader: nil,
+          search_radius_km: search_radium_km,
+          origin: GeoPosition.new(latitude: 53.339428, longitude: -6.257664),
+      )
+    }.to raise_error(ArgumentError)
+  end
+
+  it 'requires search_radius_km param' do
+    expect {
+      CustomerSearch.new(
+          customer_reader: customer_reader,
+          search_radius_km: nil,
+          origin: GeoPosition.new(latitude: 53.339428, longitude: -6.257664),
+      )
+    }.to raise_error(ArgumentError)
+  end
+
+  it 'requires origin param' do
+    expect {
+      CustomerSearch.new(
+          customer_reader: customer_reader,
+          search_radius_km: search_radium_km,
+          origin: nil,
+      )
+    }.to raise_error(ArgumentError)
+  end
+
   describe '#call' do
     let(:customer_reader) {
       [

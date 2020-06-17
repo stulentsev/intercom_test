@@ -1,8 +1,9 @@
-# typed: true
 class FileReader
   include Enumerable
 
   def initialize(filename:)
+    raise ArgumentError, "filename can't be nil" unless filename
+
     @filename = filename
   end
 

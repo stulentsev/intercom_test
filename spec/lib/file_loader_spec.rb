@@ -3,6 +3,18 @@ require 'spec_helper'
 RSpec.describe FileLoader do
   subject { FileLoader.new(filename: 'data/customers.txt') }
 
+  it 'raises error on nil filename' do
+    expect {
+      FileLoader.new(filename: nil)
+    }.to raise_error(ArgumentError)
+  end
+
+  it 'raises error on non-existing files' do
+    expect {
+      FileLoader.new(filename: 'data/foobar.txt')
+    }.to raise_error(ArgumentError)
+  end
+
   it 'is an enumerable' do
     expect(subject).to be_an Enumerable
   end
