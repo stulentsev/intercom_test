@@ -32,11 +32,11 @@ bundle exec rspec spec
 
 # Notes about the implementation
 
-The original problem description says "program should read list of customers [from a file] and output id and name [to stdout]". If we're building a CLI tool, this is not how a good unixy tool should operate. So additionally I implemented the ability to read customer data from the standard input (to mirror printing results to stdout) and the ability to save the results in a file. 
+The original problem description says "program should read list of customers [from a file] and output id and name [to stdout]". If we're building a CLI tool, this is not how a good unixy tool should operate. So additionally I implemented the ability to read customer data from the standard input (to mirror printing results to stdout) and the ability to save the results in a file (because it was a missing piece). 
 
-The program could have been a bit simpler if we dropped dealing with files altogether: read from stdin, write to stdout.
+The program could have been a bit simpler if we dropped dealing with files altogether: read from stdin, write to stdout. This would allow us, for example, to merge FileReader and CustomerReader.
  
- Interface of formatters/writers uses `<<` instead of, say, `puts` to enable us passing arrays as mock writers / data capture objects in tests. Also this reminds me of C++'s `iostream`.
+ Interface of formatters/writers uses `<<` instead of, say, `puts` to enable us passing arrays as mock writers / data capture objects in tests. Also this might be reminding me of C++'s `iostream`.
  
  
 
