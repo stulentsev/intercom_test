@@ -10,4 +10,11 @@ RSpec.describe GeoPosition do
       expect(distance).to be_within(0.01).of(0.12)
     end
   end
+
+  describe '#to_s' do
+    it 'returns lat,lon' do
+      expect(GeoPosition.new(latitude: 53.339428, longitude: -6.257664).to_s).to eq '53.339428,-6.257664'
+    end
+  end
+
 end

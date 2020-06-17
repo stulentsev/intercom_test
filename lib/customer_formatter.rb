@@ -11,7 +11,7 @@ class CustomerFormatter
         user_id: customer.user_id,
         name: customer.name
     }
-    writer << selected_attributes.to_json
+    writer << selected_attributes.to_json + "\n"
   end
 
   private

@@ -1,6 +1,8 @@
 require 'json'
 
 class CustomerReader
+  include Enumerable
+
   def initialize(line_reader:)
     @line_reader = line_reader
   end

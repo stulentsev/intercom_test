@@ -27,6 +27,10 @@ RSpec.describe CustomerSearch do
       nearby_customers = customer_search.call
       expect(nearby_customers.map(&:user_id)).to match_array([1, 2])
     end
+
+    it 'returns a CustomerSearchResult' do
+      expect(customer_search.call).to be_a CustomerSearchResult
+    end
   end
 
 end

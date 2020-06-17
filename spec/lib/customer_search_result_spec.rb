@@ -11,6 +11,10 @@ RSpec.describe CustomerSearchResult do
 
   subject(:customer_search_result) { CustomerSearchResult.new(customers: customers) }
 
+  it 'is an Enumerable' do
+    expect(customer_search_result).to be_an Enumerable
+  end
+
   describe '#write_to' do
     let(:writer) { [] }
 
@@ -20,6 +24,16 @@ RSpec.describe CustomerSearchResult do
       }.to change {
         writer.map(&:user_id)
       }.from([]).to([1, 2, 3])
+    end
+  end
+
+  describe '#empty?' do
+    it 'is false when some customers are present' do
+      expect(CustomerSearchResult.new(customers: [1]).empty?).to eq false
+    end
+
+    it 'is true when no customers are present' do
+      expect(CustomerSearchResult.new(customers: []).empty?).to eq true
     end
   end
 end

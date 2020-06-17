@@ -10,7 +10,11 @@ RSpec.describe CustomerReader do
   }
   
   subject(:customer_reader) { CustomerReader.new(line_reader: line_reader)}
-  
+
+  it 'is an Enumerable' do
+    expect(customer_reader).to be_an Enumerable
+  end
+
   it 'converts json lines to Customer objects' do
     iter = customer_reader.each
     

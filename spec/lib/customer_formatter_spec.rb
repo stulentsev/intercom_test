@@ -12,7 +12,8 @@ RSpec.describe CustomerFormatter do
           position: GeoPosition.new(latitude: 0, longitude: 0),
       )
       initial = []
-      expected = ['{"user_id":1,"name":"Joe Smith"}']
+      expected = ["{\"user_id\":1,\"name\":\"Joe Smith\"}\n"]
+
 
       expect {
         customer_formatter << customer

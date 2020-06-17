@@ -1,4 +1,4 @@
-# {"latitude": "52.986375", "user_id": 12, "name": "Christina McArdle", "longitude": "-6.043701"}
+# data object, does not carry logic
 class Customer
   def initialize(user_id:, name:, position: )
     @user_id = user_id

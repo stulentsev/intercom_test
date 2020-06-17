@@ -1,7 +1,6 @@
 require './lib/customer'
 
 class CustomerSearch
-
   attr_reader :search_radius_km, :origin
   
   def initialize(customer_reader:, search_radius_km: 100, origin: )
@@ -11,9 +10,11 @@ class CustomerSearch
   end
 
   def call
-    customer_reader.select do |customer|
+    filtered_customers = customer_reader.select do |customer|
       origin.distance_in_km_to(customer.position) <= search_radius_km
     end
+
+    CustomerSearchResult.new(customers: filtered_customers)
   end
   
   private

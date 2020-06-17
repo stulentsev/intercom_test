@@ -1,8 +1,18 @@
 class CustomerSearchResult
+  include Enumerable
+
   attr_reader :customers
 
   def initialize(customers:)
     @customers = customers
+  end
+
+  def each(&block)
+    customers.each(&block)
+  end
+
+  def empty?
+    customers.empty?
   end
 
   def write_to(customer_writer:)

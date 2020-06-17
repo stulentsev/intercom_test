@@ -6,6 +6,10 @@ class GeoPosition
     @longitude = longitude
   end
 
+  def to_s
+    "#{latitude},#{longitude}"
+  end
+
   def distance_in_km_to(another)
     lat1 = degrees_to_radians(latitude)
     lat2 = degrees_to_radians(another.latitude)
