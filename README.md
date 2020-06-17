@@ -1,6 +1,6 @@
 # Overview
 
-This program reads a list of customers from a file and outputs those customers who are within N (defalt = 100) kilometers from the HQ.
+This program reads a list of customers from a file and outputs those customers who are within N (default = 100) kilometers from the HQ.
 
 # Installation
 
@@ -42,4 +42,5 @@ The program could have been a bit simpler if we dropped dealing with files altog
 
 # TODO
 
-* gemify the program to simplify the installation
+* Gemify the program to simplify the installation
+* Add type annotations via [Sorbet](https://sorbet.org/). It can enforce nil-safety and improve type safety. 
