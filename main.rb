@@ -1,9 +1,11 @@
 #! /usr/bin/env ruby
 
+require 'bundler'
+Bundler.require
+
 # eager-loading
-$LOAD_PATH.unshift '.'
 Dir.glob('lib/*.rb').each do |file|
-  require file
+  require_relative file
 end
 
 if __FILE__ == $0
