@@ -1,16 +1,16 @@
 class Application
   def self.run(options)
-    search_radius_km = options[:search_radius] || 100.0
-    input_io = if options[:input_filename].nil?
+    search_radius_km = options.search_radius || 100.0
+    input_io = if options.input_filename.nil?
                  StdinLoader.new
                else
-                 FileLoader.new(filename: options[:input_filename])
+                 FileLoader.new(filename: options.input_filename)
                end
-    output_io = if options[:output_filename].nil?
+    output_io = if options.output_filename.nil?
                   StdoutWriter.new
                 else
-                  File.delete(options[:output_filename]) if File.exists?(options[:output_filename])
-                  FileWriter.new(filename: options[:output_filename])
+                  File.delete(options.output_filename) if File.exists?(options.output_filename)
+                  FileWriter.new(filename: options.output_filename)
                 end
 
     office_location = GeoPosition.new(latitude: 53.339428, longitude: -6.257664)
