@@ -16,13 +16,13 @@ RSpec.describe CustomerSearchResult do
   end
 
   describe '#write_to' do
-    let(:writer) { [] }
+    let(:line_writer) { [] }
 
     it 'sorts customers by user_id' do
       expect {
-        customer_search_result.write_to(customer_writer: writer)
+        customer_search_result.write_to(customer_writer: line_writer)
       }.to change {
-        writer.map(&:user_id)
+        line_writer.map(&:user_id)
       }.from([]).to([1, 2, 3])
     end
   end

@@ -1,9 +1,9 @@
 require 'json'
 
 class CustomerFormatter
-  # @param writer [ #<< ] an IO-like object
-  def initialize(writer:)
-    @writer = writer
+  # @param line_writer [ #<< ] an IO-like object
+  def initialize(line_writer:)
+    @line_writer = line_writer
   end
 
   def <<(customer)
@@ -11,10 +11,10 @@ class CustomerFormatter
         customer.user_id,
         customer.name,
     ]
-    writer << selected_attributes.join(',') + "\n"
+    line_writer << selected_attributes.join(',') + "\n"
   end
 
   private
 
-  attr_reader :writer
+  attr_reader :line_writer
 end

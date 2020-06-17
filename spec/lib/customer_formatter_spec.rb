@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe CustomerFormatter do
-  let(:writer) { [] }
-  subject(:customer_formatter) { CustomerFormatter.new(writer: writer) }
+  let(:line_writer) { [] }
+  subject(:customer_formatter) { CustomerFormatter.new(line_writer: line_writer) }
 
   describe '#<<' do
     it 'outputs only user_id and name' do
@@ -17,7 +17,7 @@ RSpec.describe CustomerFormatter do
 
       expect {
         customer_formatter << customer
-      }.to change { writer }.from(initial).to(expected)
+      }.to change { line_writer }.from(initial).to(expected)
     end
   end
 end
