@@ -19,7 +19,6 @@ if __FILE__ == $0
     end
 
     opts.on("--output FILENAME", "File to write data to. If not specified, data will be written to standard output") do |v|
-      raise "File #{v} does not exist" unless File.exists?(v)
       options[:output_filename] = v
     end
 
@@ -42,6 +41,7 @@ if __FILE__ == $0
   output_io = if options[:output_filename].nil?
                 STDOUT
               else
+                File.delete(options[:output_filename]) if File.exists?(options[:output_filename])
                 FileWriter.new(filename: options[:output_filename])
               end
 
