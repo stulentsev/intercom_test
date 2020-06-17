@@ -34,12 +34,12 @@ if __FILE__ == $0
 
   search_radius_km = options[:search_radius] || 100.0
   input_io = if options[:input_filename].nil?
-               STDIN
+               StdinLoader.new
              else
                FileLoader.new(filename: options[:input_filename])
              end
   output_io = if options[:output_filename].nil?
-                STDOUT
+                StdoutWriter.new
               else
                 File.delete(options[:output_filename]) if File.exists?(options[:output_filename])
                 FileWriter.new(filename: options[:output_filename])
@@ -54,7 +54,11 @@ if __FILE__ == $0
 
   if search_result.empty?
     puts "No customers within #{search_radius_km} km of #{office_location}"
+    exit
   end
-  customer_writer = CustomerFormatter.new(writer: output_io)
-  search_result.write_to(customer_writer: customer_writer)
+
+  output_io.bulk_write do |writer|
+    customer_writer = CustomerFormatter.new(writer: writer)
+    search_result.write_to(customer_writer: customer_writer)
+  end
 end

@@ -5,9 +5,9 @@ class FileWriter
     @filename = filename
   end
 
-  def <<(line)
-    File.open(filename, 'a') do |file|
-      file << line
+  def bulk_write
+    File.open(filename, 'w') do |file|
+      yield file
     end
   end
 end

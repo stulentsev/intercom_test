@@ -1,5 +1,3 @@
-require './lib/customer'
-
 class FileLoader
   include Enumerable
 
