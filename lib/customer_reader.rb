@@ -16,7 +16,7 @@ class CustomerReader
       customer = Customer.new(
           user_id: user_id,
           name: name,
-          position: GeoPosition.new(latitude: latitude.to_f, longitude: longitude.to_f),
+          position: GeoPosition.new(latitude: Float(latitude), longitude: Float(longitude)),
       )
       yield customer
     end
