@@ -7,11 +7,11 @@ class CustomerFormatter
   end
 
   def <<(customer)
-    selected_attributes = {
-        user_id: customer.user_id,
-        name: customer.name
-    }
-    writer << selected_attributes.to_json + "\n"
+    selected_attributes = [
+        customer.user_id,
+        customer.name,
+    ]
+    writer << selected_attributes.join(',') + "\n"
   end
 
   private
